@@ -1,16 +1,23 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 const cors = require('cors')
 const db = require('./database/db');
-require('dotenv').config()
+const controller = require('./controllers/controllers');
+require('dotenv').config();
 
-app.use(cors())
-app.use(express.static('public'))
+app.use(cors());
+app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+db.startDB();
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html')
 });
 
-console.log(db)
+app.post('/api/users', controller.createUser);
+
+
 
 
 
