@@ -16,6 +16,9 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/users', controller.createUser);
+app.get('/api/users', controller.getUsers);
+app.post('/api/users/:userId/exercises', controller.createExercise);
+app.get('/api/users/:userId/logs', controller.getExercisesByIndividualUser);
 
 
 
