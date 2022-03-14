@@ -129,12 +129,12 @@ async function getCount(id, from, to) {
         `
 
     if (from) {
-        result += `AND date>?`;
+        query += `AND date>?`;
         params.push(from);
     }
 
     if (to) {
-        result += `AND date<?`;
+        query += `AND date<?`;
         params.push(to);
     }
 
@@ -165,7 +165,6 @@ async function getExercises(id, from, to, limit) {
         query += `AND date<?`;
         params.push(to);
     }
-    query += `ORDER BY date`
 
     if (limit) {
         query += `LIMIT ?`;
